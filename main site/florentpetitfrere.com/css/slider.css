@@ -1,0 +1,322 @@
+.caption h2 {
+    display: flex;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+    font-family: 'Butler Bold';
+    text-align: center;
+    display: none;
+}
+.homepage #subnav a {
+    color: #999;
+}
+
+.homepage #subnav a::before {
+    color: #FFF;
+}
+#subnav, #subnav-footer {
+    position: fixed;
+    bottom: 80px;
+    left: 15%;
+    z-index: 88;
+    text-transform: uppercase;
+    width: 70%;
+    text-align: center;
+}
+
+#subnav a, #subnav-footer a {
+    text-shadow: none;
+    padding: 10px 0;
+    color: #6f6f6f;
+    text-transform: uppercase;
+    font-family: "bebas_neue", sans-serif;
+    font-weight: 700;
+    transition: color 0.5s ease;
+    font-size: 18px;
+    letter-spacing: 4px;
+    position: relative;
+    margin: 10px 15px;
+    overflow: hidden;
+}
+
+#subnav a::before, #subnav-footer a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 10px 0;
+    max-width: 100%;
+    opacity: 0;
+    color: #9e9e9e;
+    content: attr(data-hover);
+    -webkit-transition: 0.6s ease;
+    -moz-transition: 0.6s ease;
+    transition: 0.6s ease;
+}
+
+#subnav a:hover::before,
+#subnav a:focus::before,
+#subnav-footer a:hover::before,
+#subnav-footer a:focus::before {
+    max-width: 100%;
+    opacity: 1;
+}
+
+#caroussel {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+#caroussel li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: 1s;
+}
+
+#caroussel li .caption {
+    opacity: 0;
+    transition: opacity 1s 0.6s;
+}
+
+#caroussel li .caption img {
+    opacity: 0;
+    transform: scale(1, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s ease;
+}
+
+.loaded #caroussel li .caption img {
+    animation-name: sliderswitch;
+    animation-duration: 42000ms;
+    animation-iteration-count: infinite;
+}
+
+/*-- 01 --*/
+
+.loaded #caroussel li .caption img.fashion01 {
+    animation-delay: 0s;
+}
+
+.loaded #caroussel li .caption img.commissioned01 {
+    animation-delay: 4200ms;
+}
+
+.loaded #caroussel li .caption img.portrait01 {
+    animation-delay: 8400ms;
+}
+
+.loaded #caroussel li .caption img.documentary01 {
+    animation-delay: 12600ms;
+}
+
+.loaded #caroussel li .caption img.testshoot01 {
+    animation-delay: 16800ms;
+}
+
+/*-- 02 --*/
+
+.loaded #caroussel li .caption img.fashion02 {
+    animation-delay: 21000ms;
+}
+
+.loaded #caroussel li .caption img.commissioned02 {
+    animation-delay: 25200ms;
+}
+
+.loaded #caroussel li .caption img.portrait02 {
+    animation-delay: 29400ms;
+}
+
+.loaded #caroussel li .caption img.documentary02 {
+    animation-delay: 33600ms;
+}
+
+.loaded #caroussel li .caption img.testshoot02 {
+    animation-delay: 37800ms;
+}
+
+
+@keyframes sliderswitch {
+    0% {
+        opacity: 0.9;
+        transform: scale(1.2, 1.2);
+    }
+    33% {
+        opacity:0.9;
+        transform: scale(1.3, 1.3);
+    }
+    33.01% {
+        opacity: 0;
+        transform: scale(1, 1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1, 1);
+    }
+}
+
+#caroussel li.active .caption {
+    opacity: 1;
+    transition: opacity 1s 1s;
+}
+
+#caroussel li.active {
+    opacity: 1;
+    transition: 1s opacity 1s;
+}
+
+.nav {
+    position: fixed;
+    top: 45%;
+    right: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: 3px solid #ccc;
+    transition: .5s;
+    opacity: 0;
+}
+
+.nav:after {
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 8px;
+    width: 8px;
+    top: 20px;
+    transform: rotate(45deg);
+}
+
+#next {
+    margin-top: -40px;
+}
+
+#next:after {
+    border-top: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    left: 18px;
+}
+
+#prev {
+    margin-top: 40px;
+}
+
+#prev:after {
+    border-left: 3px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    left: 22px;
+}
+
+#subnav a::after,
+#subnav-footer a::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 10px 0;
+    max-width: 100%;
+    opacity: 0;
+    color: #FFF;
+    content: attr(data-hover);
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    transition: opacity 0.6s;
+    z-index: 1;
+}
+
+#subnav a.active::after,
+#subnav-footer a.active::after{
+    opacity: 1;
+    max-width: 100%;
+    -webkit-transition: opacity 4s;
+    -moz-transition: opacity 4s;
+    transition: opacity 4s;
+}
+
+.homepage #subnav a.active::after {
+    opacity: 0 !important;
+}
+
+span.lien {
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+span.lien {
+    opacity: 0;
+    transition: 0.6s ease 0s;
+}
+
+.active span.lien {
+    opacity: 1;
+    transition: 0.4s ease 1.4s;
+}
+
+@media screen and (max-width:960px) {
+    #subnav-footer {
+    position: fixed;
+    bottom: 15px;
+    left: 15%;
+    z-index: 88;
+    text-transform: uppercase;
+    width: 70%;
+    text-align: center;
+}
+    #subnav {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 88;
+        text-transform: uppercase;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #subnav a {
+        font-size: 30px;
+        font-family: 'Butler Bold';
+        text-align: center;
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: normal;
+        padding:0;
+        margin:5px 15px;
+    }
+    .caption h2 {
+        display:none;
+    }
+    #subnav a:before,#subnav a:hover::before, #subnav a:focus::before, #subnav a::after {
+        padding:0;
+        
+    }
+}
+@media screen and (max-width:768px) {
+    #subnav a {
+        color:#FFF
+    }
+    #subnav-footer {
+        display: none;
+    }
+}
